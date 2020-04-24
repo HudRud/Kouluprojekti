@@ -14,5 +14,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("ei","henri oot ihan kakka");
         Log.d("kyllä","jaakko on myös ihan kakka");
         Log.d("jotain","Kevin on myös kakka");
+        Log.d("saofneo","dspoflowq");
     }
 }
