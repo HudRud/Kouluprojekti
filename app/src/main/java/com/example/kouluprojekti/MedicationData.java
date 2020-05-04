@@ -5,7 +5,7 @@ public class MedicationData {
     private String time;
     private boolean isChecked;
 
-    public MedicationData(String medName, String time,boolean isChecked) {
+    public MedicationData(String medName, String time, boolean isChecked) {
         this.medName = medName;
         this.time = time;
         this.isChecked = isChecked;

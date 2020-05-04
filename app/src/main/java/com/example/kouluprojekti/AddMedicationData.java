@@ -43,6 +43,7 @@ This is to provide accuracy for the json and to prevent data loss
 
     /**
      * Method for saving inserted data from medicationdatainsert activity
+     *
      * @param v
      */
     public void saveMedData(View v) {
@@ -50,12 +51,12 @@ This is to provide accuracy for the json and to prevent data loss
         Spinner spinnerHour = (Spinner) findViewById(R.id.hourSpinner);
         Spinner spinnerMinute = (Spinner) findViewById(R.id.minuteSpinner);
         inputField = findViewById(R.id.editText1);
-        String timePre = spinnerHour.getSelectedItem().toString() + "."+ spinnerMinute.getSelectedItem().toString();
+        String timePre = spinnerHour.getSelectedItem().toString() + "." + spinnerMinute.getSelectedItem().toString();
         boolean isChecked = false;
-        Log.d("test",timePre);
+        Log.d("test", timePre);
         String medName = inputField.getText().toString();
 
-        addMed = new MedicationData(medName,timePre,isChecked);
+        addMed = new MedicationData(medName, timePre, isChecked);
 
         Gson gson = new Gson();
 
@@ -63,7 +64,7 @@ This is to provide accuracy for the json and to prevent data loss
 
         String json = gson.toJson(medList);
 
-        editor.putString(DATA,json);
+        editor.putString(DATA, json);
 
         editor.commit();
 
@@ -73,15 +74,16 @@ This is to provide accuracy for the json and to prevent data loss
     /**
      * Method for fetching data from SharedPreferences. Used to prevent data loss
      */
-    private void fetchExistingData(){
+    private void fetchExistingData() {
         Gson gson = new Gson();
 
-        String json = setPref.getString(DATA,null);
+        String json = setPref.getString(DATA, null);
 
-        Type type = new TypeToken<ArrayList<MedicationData>>() {}.getType();
+        Type type = new TypeToken<ArrayList<MedicationData>>() {
+        }.getType();
 
-        medList = gson.fromJson(json,type);
-        if(medList == null){
+        medList = gson.fromJson(json, type);
+        if (medList == null) {
             medList = new ArrayList<>();
         }
 
@@ -89,27 +91,35 @@ This is to provide accuracy for the json and to prevent data loss
 
     /**
      * Method for MedListAdapter to access SharedPreferences and deleting an item in the medList array
+     *
      * @param context
      * @param index
      */
-    public void logger(Context context,int index, boolean check){
+    public void logger(Context context, int index, boolean check) {
         Gson gson = new Gson();
-        SharedPreferences getPref = context.getSharedPreferences(PREFNAME,Activity.MODE_PRIVATE);
-    String json = getPref.getString(DATA,null);
+        SharedPreferences getPref = context.getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
+        String json = getPref.getString(DATA, null);
 
-    Type type = new TypeToken<ArrayList<MedicationData>>() {}.getType();
+        Type type = new TypeToken<ArrayList<MedicationData>>() {
+        }.getType();
 
-    medList = gson.fromJson(json,type);
-    if(medList == null){
-        medList = new ArrayList<>();
-    }
+        medList = gson.fromJson(json, type);
+        if (medList == null) {
+            medList = new ArrayList<>();
+        }
         medList.get(index).setChecked(check);
-         json = gson.toJson(medList);
-    SharedPreferences.Editor editor = getPref.edit();
-    editor.putString(DATA,json);
-    editor.commit();
+        json = gson.toJson(medList);
+        SharedPreferences.Editor editor = getPref.edit();
+        editor.putString(DATA, json);
+        editor.commit();
 
-}
+    }
+
+    /**
+     * Method for accessing sharedPreferences outside of the activity class
+     *
+     * @param context
+     */
     public void loadData(Context context) {
         Gson gson = new Gson();
         SharedPreferences getPref = context.getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
