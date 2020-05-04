@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     MedListAdapter adapter;
 
+    AddMedicationData updater;
+
     private static final String PREFNAME = "medfile";
 
 
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MedListAdapter(this, R.layout.mednotelayout, medList);
 
         mMainList.setAdapter(adapter);
+
+        updater = new AddMedicationData();
 
     }
 
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
      * Method that loads data from SharedPreferences and inserts it into medList Array
      * Used to prevent data loss
      */
-    private void loadData() {
+    public void loadData() {
         Gson gson = new Gson();
 
         String json = getPref.getString("DATAJSON", null);
@@ -94,6 +98,16 @@ public class MainActivity extends AppCompatActivity {
             medList = new ArrayList<>();
         }
 
+    }
+    public void resetCheck(View v){
+        for(int i = 0; i < medList.size(); i++){
+            Log.d("flags",Boolean.toString(medList.get(i).isChecked()));
+            updater.logger(this,i,false);
+        }
+        loadData();
+        adapter.clear();
+        adapter.addAll(medList);
+        adapter.notifyDataSetChanged();
     }
 
 }

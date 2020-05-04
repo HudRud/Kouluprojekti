@@ -92,7 +92,7 @@ This is to provide accuracy for the json and to prevent data loss
      * @param context
      * @param index
      */
-    public void logger(Context context,int index){
+    public void logger(Context context,int index, boolean check){
         Gson gson = new Gson();
         SharedPreferences getPref = context.getSharedPreferences(PREFNAME,Activity.MODE_PRIVATE);
     String json = getPref.getString(DATA,null);
@@ -103,12 +103,26 @@ This is to provide accuracy for the json and to prevent data loss
     if(medList == null){
         medList = new ArrayList<>();
     }
-        medList.remove(index);
+        medList.get(index).setChecked(check);
          json = gson.toJson(medList);
     SharedPreferences.Editor editor = getPref.edit();
     editor.putString(DATA,json);
     editor.commit();
 
 }
+    public void loadData(Context context) {
+        Gson gson = new Gson();
+        SharedPreferences getPref = context.getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
+        String json = getPref.getString("DATAJSON", null);
+
+        Type type = new TypeToken<ArrayList<MedicationData>>() {
+        }.getType();
+
+        medList = gson.fromJson(json, type);
+
+        if (medList == null) {
+            medList = new ArrayList<>();
+        }
+    }
 
 }
