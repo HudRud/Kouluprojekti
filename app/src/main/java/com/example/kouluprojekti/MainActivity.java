@@ -27,6 +27,5 @@ ListView lv;
         medList.add(med4);
         MedListAdapter adapter = new MedListAdapter(this,R.layout.mednotelayout,medList);
         lv.setAdapter(adapter);
-
     }
 }
