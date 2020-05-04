@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Kouluprojekti</string>
+    <string name="notificationInfo">Ajanvaraus muistutus</string>
+    <string name="notificationText1">Ajanvaraus lääkärille kello </string>
 </resources>
