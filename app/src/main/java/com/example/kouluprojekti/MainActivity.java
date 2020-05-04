@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         adapter.addAll(medList);
         adapter.notifyDataSetChanged();
 
+
+
     }
 
 
@@ -91,14 +94,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
    //Temporary method for resetting notifications
     public void resetCheck(View v) {
-        for (int i = 0; i < medList.size(); i++) {
-            Log.d("flags", Boolean.toString(medList.get(i).isChecked()));
-            updater.logger(this, i, false);
-        }
-        loadData();
+        SharedPreferences.Editor edit = getSharedPreferences(PREFNAME,Activity.MODE_PRIVATE).edit();
+        edit.putString("DATAJSON","");
+        edit.commit();
+        medList = new ArrayList<>();
         adapter.clear();
-        adapter.addAll(medList);
-        adapter.notifyDataSetChanged();
+
     }
 
     /**

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class MedListAdapter extends ArrayAdapter<MedicationData> {
@@ -44,25 +45,34 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
     @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        Calendar c = Calendar.getInstance();
+
         String name = getItem(position).getMedName();
 
         String time = getItem(position).getTime();
 
         boolean status = getItem(position).isChecked();
 
-        final MedicationData medData = new MedicationData(name, time, status);
+        int date = getItem(position).getDate();
+
+        final MedicationData medData = new MedicationData(name, time, status, date);
 
         LayoutInflater inflater = LayoutInflater.from(this.mContext);
 
-
         convertView = inflater.inflate(this.mResource, parent, false);
 
-
         TextView tv = convertView.findViewById(R.id.medname);
-
+        TextView timeText = convertView.findViewById(R.id.timeText);
         tv.setText(name);
-
+        timeText.setText(time);
         CheckBox cc = convertView.findViewById(R.id.checkbox1);
+
+        if (getItem(position).getDate() != c.get(Calendar.DAY_OF_MONTH))
+        {
+            getItem(position).setChecked(false);
+            updater.logger(getContext(), position, false);
+
+        }
         if (getItem(position).isChecked() == false) {
             convertView.setBackgroundColor(Color.parseColor("#00FFFFFF"));
             cc.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +85,8 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
                 public void onClick(View v) {
                     //remove(getItem(position));
                     //notifyDataSetChanged();
+                    Log.d("test",getItem(position).getMedName());
+
                     updater.logger(getContext(), position, true);
                     updater.loadData(getContext());
                     clear();
@@ -86,6 +98,9 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
             //cc.setVisibility(View.INVISIBLE);
             Log.d("flag", "entry no." + position + " is checked");
             convertView.setBackgroundColor(Color.parseColor("#535353"));
+            cc.setChecked(true);
+            cc.setClickable(false);
+
         }
 
 
