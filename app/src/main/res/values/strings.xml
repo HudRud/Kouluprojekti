@@ -37,5 +37,7 @@
     </string-array>
     <string name="notificationInfo">Ajanvaraus muistutus</string>
     <string name="notificationText1">Ajanvaraus lääkärille kello </string>
+    <string name="med">Medication</string>
+    <string name="doc">Notification</string>
 
 </resources>

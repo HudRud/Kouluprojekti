@@ -35,6 +35,7 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
 
     /**
      * Methdod that creates a View based on the resource parameter
+     *
      * @param position
      * @param convertView
      * @param parent
@@ -42,53 +43,50 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
      */
     @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent){
+    public View getView(final int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getMedName();
 
         String time = getItem(position).getTime();
 
         boolean status = getItem(position).isChecked();
 
-        final MedicationData medData = new MedicationData(name,time,status);
+        final MedicationData medData = new MedicationData(name, time, status);
 
         LayoutInflater inflater = LayoutInflater.from(this.mContext);
 
 
-
-            convertView = inflater.inflate(this.mResource, parent, false);
-
-
-            TextView tv = convertView.findViewById(R.id.medname);
-
-            tv.setText(name);
-
-            CheckBox cc = convertView.findViewById(R.id.checkbox1);
-            if(getItem(position).isChecked() == false){
-                convertView.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-                cc.setOnClickListener(new View.OnClickListener() {
-                    /**
-                     * onClick given to checkboxes created to the listView.
-                     * Used to manipulate the parent and data in the medList on AddMedicationData.java
-                     * @param v
-                     */
-                    @Override
-                    public void onClick(View v) {
-                        //remove(getItem(position));
-                        //notifyDataSetChanged();
-                        updater.logger(getContext(),position,true);
-                        updater.loadData(getContext());
-                        clear();
-                        addAll(updater.medList);
-                        notifyDataSetChanged();
-                    }
-                });
-            }else{
-                //cc.setVisibility(View.INVISIBLE);
-                Log.d("flag","entry no." + position + " is checked");
-                convertView.setBackgroundColor(Color.parseColor("#535353"));
-            }
+        convertView = inflater.inflate(this.mResource, parent, false);
 
 
+        TextView tv = convertView.findViewById(R.id.medname);
+
+        tv.setText(name);
+
+        CheckBox cc = convertView.findViewById(R.id.checkbox1);
+        if (getItem(position).isChecked() == false) {
+            convertView.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+            cc.setOnClickListener(new View.OnClickListener() {
+                /**
+                 * onClick given to checkboxes created to the listView.
+                 * Used to manipulate the parent and data in the medList on AddMedicationData.java
+                 * @param v
+                 */
+                @Override
+                public void onClick(View v) {
+                    //remove(getItem(position));
+                    //notifyDataSetChanged();
+                    updater.logger(getContext(), position, true);
+                    updater.loadData(getContext());
+                    clear();
+                    addAll(updater.medList);
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            //cc.setVisibility(View.INVISIBLE);
+            Log.d("flag", "entry no." + position + " is checked");
+            convertView.setBackgroundColor(Color.parseColor("#535353"));
+        }
 
 
         return convertView;
