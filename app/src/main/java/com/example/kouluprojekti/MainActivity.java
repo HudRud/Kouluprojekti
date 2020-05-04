@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        addMed = findViewById(R.id.floatingActionButton);
+        //addMed = findViewById(R.id.floatingActionButton);
 
         medList = new ArrayList<>();
 
-        mMainList = findViewById(R.id.ListView1);
+        //mMainList = findViewById(R.id.ListView1);
 
         getPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
 
