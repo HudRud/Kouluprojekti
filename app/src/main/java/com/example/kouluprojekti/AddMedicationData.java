@@ -51,11 +51,12 @@ This is to provide accuracy for the json and to prevent data loss
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
+
         setContentView(R.layout.medicationdatainsert);
+
         fetchExistingData();
-
-
     }
     public void timePickerButton(View v){
         DialogFragment timePicker = new TimePickerFragment();
@@ -79,14 +80,9 @@ This is to provide accuracy for the json and to prevent data loss
     public void saveMedData() {
         SharedPreferences.Editor editor = setPref.edit();
 
-
-
         Calendar c = Calendar.getInstance();
 
-        int date = c.get(Calendar.DAY_OF_MONTH);
-
-        Log.d("test", timeString);
-        Log.d("test",Integer.toString(date));
+        String date = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
 
         medName = inputField.getText().toString();
 
@@ -145,8 +141,8 @@ This is to provide accuracy for the json and to prevent data loss
         }
         Calendar c = Calendar.getInstance();
 
-        medList.get(index).setDate(c.get(Calendar.DAY_OF_MONTH));
-
+        medList.get(index).setDate(DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime()));
+        Log.d("status",medList.get(index).getDate());
         medList.get(index).setChecked(check);
 
         json = gson.toJson(medList);
@@ -156,6 +152,33 @@ This is to provide accuracy for the json and to prevent data loss
         editor.putString(DATA, json);
 
         editor.commit();
+
+    }
+    public void removeItem(Context context, int index){
+
+        Gson gson = new Gson();
+
+        SharedPreferences getPref = context.getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
+
+        String json = getPref.getString(DATA, null);
+
+        Type type = new TypeToken<ArrayList<MedicationData>>() {
+        }.getType();
+
+        medList = gson.fromJson(json, type);
+        if (medList == null) {
+            medList = new ArrayList<>();
+        }
+        medList.remove(index);
+
+        json = gson.toJson(medList);
+
+        SharedPreferences.Editor editor = getPref.edit();
+
+        editor.putString(DATA,json);
+
+        editor.commit();
+
 
     }
 

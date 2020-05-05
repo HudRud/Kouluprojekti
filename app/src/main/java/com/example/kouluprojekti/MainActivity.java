@@ -31,6 +31,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         setContentView(R.layout.activity_main);
         calendar = Calendar.getInstance();
         ImageButton calendarButton =findViewById(R.id.calendar_button);
-        //addMed = findViewById(R.id.floatingActionButton);
+
         medList = new ArrayList<>();
         mMainList = findViewById(R.id.ListView1);
         getPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
@@ -89,15 +90,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             medList = new ArrayList<>();
         }
     }
+    public void saveData(){
 
-   //Temporary method for resetting notifications
-    public void resetCheck(View v) {
-        SharedPreferences.Editor edit = getSharedPreferences(PREFNAME,Activity.MODE_PRIVATE).edit();
-        edit.putString("DATAJSON","");
+        Gson gson = new Gson();
+
+        SharedPreferences.Editor edit = getPref.edit();
+
+        String json = gson.toJson(medList);
+
+        edit.putString("DATAJSON",json);
+
         edit.commit();
-        medList = new ArrayList<>();
-        adapter.clear();
-
     }
 
     /**
@@ -116,10 +119,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         switch (item.getItemId()){
             case R.id.medication:
                  intent = new Intent(MainActivity.this, AddMedicationData.class);
-                 startActivity(intent);
-                 break;
-            case R.id.notification:
-                 intent = new Intent(MainActivity.this, Calendar.class);
                  startActivity(intent);
                  break;
             case R.id.settings:
@@ -159,6 +158,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         calendar.set(Calendar.HOUR_OF_DAY,hour);
         calendar.set(Calendar.MINUTE,minute);
         calendar.set(Calendar.SECOND,0);
+
+        String date = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
+
+        String timeString = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
+        loadData();
+        medList.add(new MedicationData("Appointment", timeString,false,date));
+        saveData();
+        adapter.clear();
+        adapter.addAll(medList);
+        adapter.notifyDataSetChanged();
         createAlarm(calendar);
     }
 

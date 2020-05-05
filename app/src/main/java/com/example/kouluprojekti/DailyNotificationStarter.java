@@ -167,7 +167,7 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
 
         setAlarmState(true);
 

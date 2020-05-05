@@ -46,5 +46,6 @@
     <string name="calendar_button">Calendar</string>
     <string name="home_button">Home</string>
     <string name="add_button">Add</string>
+    <string name="topic">Appointment</string>
 
 </resources>
