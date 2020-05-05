@@ -21,23 +21,6 @@
         app:srcCompat="@android:drawable/bottom_bar"
         app:tintMode="screen" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="74dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="344dp"
-        android:layout_marginLeft="344dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:onClick="showPopUp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/plus_button" />
-
     <ImageButton
         android:id="@+id/calendar_button"
         android:layout_width="114dp"
@@ -55,6 +38,19 @@
         app:layout_constraintStart_toEndOf="@+id/add_button"
         app:srcCompat="@drawable/calendar_button" />
 
+    <ImageView
+        android:id="@+id/add_button"
+        android:layout_width="174dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="1dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListView1"
+        app:srcCompat="@drawable/plus_button" />
+
     <ImageButton
         android:id="@+id/home_button"
         android:layout_width="115dp"
@@ -71,5 +67,17 @@
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/home_button2" />
+
+    <ListView
+        android:id="@+id/ListView1"
+        android:layout_width="409dp"
+        android:layout_height="571dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:cacheColorHint="#AE99D5"
+        app:layout_constraintBottom_toTopOf="@+id/add_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

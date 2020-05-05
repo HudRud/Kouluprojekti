@@ -39,5 +39,9 @@
     <string name="notificationText1">Ajanvaraus lääkärille kello </string>
     <string name="med">Medication</string>
     <string name="doc">Notification</string>
+    <string name="navigation_bg">Navigation_bg</string>
+    <string name="calendar_button">Calendar</string>
+    <string name="home_button">Home</string>
+    <string name="add_button">Add</string>
 
 </resources>

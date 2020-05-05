@@ -60,6 +60,9 @@ public class Calendar extends AppCompatActivity {
      * Timer tarkistaa määritetyn ajan jälkeeen kutsuu run() metodia jossa tarkistetaan
      * onko aika lähettää ilmoitus käyttäjälle.
      * Timer pyörii laitteen taustalla vaikka sovellus olisi suljettu.
+     *
+     * Tässä tallenetaan systeemin päivämäärä ja luodaan siitä String.
+     * Samalla myös ajasta luodaan String.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,10 +90,6 @@ public class Calendar extends AppCompatActivity {
             }
         });
         picker = (DatePicker) findViewById(R.id.datePicker);
-        /**
-         * Tässä tallenetaan systeemin päivämäärä ja luodaan siitä String.
-         * Samalla myös ajasta luodaan String.
-         */
         picker = (DatePicker)findViewById(R.id.datePicker);
         final java.util.Calendar calendar = java.util.Calendar.getInstance();
         int day = calendar.get(java.util.Calendar.DATE);
@@ -111,7 +110,7 @@ public class Calendar extends AppCompatActivity {
                 time = hours + "." + minutes;
                 Log.d("TickTime", time);
             }
-        }, 0, 30000);
+        }, 0, 60000);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
     }
 
@@ -158,7 +157,6 @@ public class Calendar extends AppCompatActivity {
     private final Runnable Timer_Tick = new Runnable() {
         @Override
         public void run() {
-            handler.postDelayed(Timer_Tick,10 * 6000 - SystemClock.elapsedRealtime() % 1000);
             Log.d("Log", "Viesti");
             FetchNotificationData();
             if (notificationList != null) {
@@ -167,6 +165,8 @@ public class Calendar extends AppCompatActivity {
                     alarmTime = notificationList.get(i).getAlarmTime();
                     if (date.equals(alarmDate) && time.equals(alarmTime)) {
                         addNotification();
+                        notificationList.remove(i);
+                        break;
                     }
                 }
             }
