@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     MedListAdapter adapter;
     AddMedicationData updater;
     Calendar calendar;
-
     private static final String PREFNAME = "medfile";
 
     @Override
@@ -157,6 +157,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         calendar.set(Calendar.MINUTE,minute);
         calendar.set(Calendar.SECOND,0);
         createAlarm(calendar);
+        Toast.makeText(getApplicationContext(),"Alarm set on: " + calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.YEAR)
+                + "\nOn: " + calendar.get(Calendar.HOUR_OF_DAY) + "." + calendar.get(Calendar.MINUTE),Toast.LENGTH_LONG).show();
     }
 
     /**
