@@ -3,69 +3,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/bottom_bar_colour"
+        android:id="@+id/bottom_colour"
         android:layout_width="418dp"
-        android:layout_height="114dp"
-        android:adjustViewBounds="false"
+        android:layout_height="136dp"
         android:contentDescription="@string/navigation_bg"
         android:scaleType="fitXY"
-        android:tint="@android:color/holo_purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/bottom_bar"
         app:tintMode="screen" />
 
     <ImageButton
-        android:id="@+id/add_button"
-        android:layout_width="148dp"
-        android:layout_height="135dp"
-        android:layout_marginBottom="5dp"
+        android:id="@+id/add_medication"
+        android:layout_width="149dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="12dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/add_button"
+        android:contentDescription="@string/add_medication_button"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/plus_button" />
+        app:layout_constraintStart_toStartOf="@+id/bottom_colour"
+        app:srcCompat="@drawable/pill_button" />
 
     <ImageButton
         android:id="@+id/calendar_button"
-        android:layout_width="114dp"
-        android:layout_height="90dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="157dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="12dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/calendar_button"
+        android:contentDescription="@string/add_appointment_button"
         android:scaleType="fitCenter"
-        android:tint="@android:color/holo_purple"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/separator"
+        app:srcCompat="@drawable/doctor_button" />
+
+    <ImageView
+        android:id="@+id/separator"
+        android:layout_width="9dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:contentDescription="@string/navigation_barrier"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/add_medication"
+        app:srcCompat="@android:drawable/btn_default"
+        app:tintMode="screen" />
+
+    <ImageView
+        android:id="@+id/separator2"
+        android:layout_width="9dp"
+        android:layout_height="128dp"
+        android:contentDescription="@string/navigation_barrier"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settings_button"
+        app:layout_constraintStart_toEndOf="@+id/calendar_button"
+        app:srcCompat="@android:drawable/btn_default"
+        app:tintMode="screen" />
+
+    <ListView
+        android:id="@+id/ListView1"
+        android:layout_width="414dp"
+        android:layout_height="457dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_colour"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.764"
-        app:layout_constraintStart_toEndOf="@+id/add_button"
-        app:srcCompat="@drawable/calendar_button" />
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </ListView>
 
     <ImageButton
-        android:id="@+id/home_button"
-        android:layout_width="115dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
+        android:id="@+id/settings_button"
+        android:layout_width="33dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/home_button"
-        android:scaleType="fitCenter"
-        android:tint="@android:color/holo_purple"
+        android:contentDescription="@string/settings_button"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/add_button"
-        app:layout_constraintHorizontal_bias="0.176"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/home_button2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bar_settings_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

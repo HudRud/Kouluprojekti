@@ -11,4 +11,9 @@
     <string name="add_appointment_button">Add appointment button</string>
     <string name="navigation_barrier">Navigation bar\'s barrier</string>
     <string name="settings_button">Settings_button</string>
+    <string name="theme_text">Sovelluksen väriteema</string>
+    <string name="blue_text">Sininen</string>
+    <string name="purple_text">Lila</string>
+    <string name="yellow_text">Keltainen</string>
+    <string name="red_text">Punainen</string>
 </resources>

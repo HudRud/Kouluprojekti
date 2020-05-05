@@ -1,12 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">#F5E2FC</item>
+    <style name="Purple" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorBackground">@color/PurpleBackground</item>
+        <item name="android:tint">@color/Purple</item>
+        <item name="android:textColor">@color/DarkPurple</item>
     </style>
 
+    <style name="Blue" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorBackground">@color/BlueBackground</item>
+        <item name="android:tint">@color/Blue</item>
+        <item name="android:textColor">@color/DarkBlue</item>
+    </style>
+
+    <style name="Yellow" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorBackground">@color/YellowBackground</item>
+        <item name="android:tint">@color/Yellow</item>
+        <item name="android:textColor">@color/DarkYellow</item>
+    </style>
+
+    <style name="Red" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorBackground">@color/RedBackground</item>
+        <item name="android:tint">@color/Red</item>
+        <item name="android:textColor">@color/DarkRed</item>
+    </style>
 </resources>
