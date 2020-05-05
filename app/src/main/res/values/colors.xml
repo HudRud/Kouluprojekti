@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="Blue">#009CEF</color>
+    <color name="DarkBlue">#005785</color>
+    <color name="LightBlue">#9AD3F1</color>
+    <color name="BlueBackground">#E2F3FC</color>
+    <color name="Purple">#FFAA66CC</color>
+    <color name="DarkPurple">#8E9C27B0</color>
+    <color name="PurpleBackground">#F5E2FC</color>
+    <color name="Yellow">#F3CD30</color>
+    <color name="DarkYellow">#9F8000</color>
+    <color name="YellowBackground">#FCF7E2</color>
+    <color name="Red">#DA4949</color>
+    <color name="DarkRed">#910000</color>
+    <color name="RedBackground">#FCE2E2</color>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>

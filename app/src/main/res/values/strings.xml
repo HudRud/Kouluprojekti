@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">Kouluprojekti</string>
+    <string name="add_button">Add button</string>
+    <string name="home_button">Home button</string>
+    <string name="calendar_button">Calendar button</string>
+    <string name="navigation_bg">Navigation bar\'s background colour</string>
+    <string name="notificationInfo">Ajanvaraus muistutus</string>
+    <string name="notificationText1">Ajanvaraus lääkärille kello </string>
+    <string name="comfirm_button">Confirm</string>
+    <string name="add_medication_button">Add medication button</string>
+    <string name="add_appointment_button">Add appointment button</string>
+    <string name="navigation_barrier">Navigation bar\'s barrier</string>
+    <string name="settings_button">Settings_button</string>
+    <string name="theme_text">Sovelluksen väriteema</string>
+    <string name="blue_text">Sininen</string>
+    <string name="purple_text">Lila</string>
+    <string name="yellow_text">Keltainen</string>
+    <string name="red_text">Punainen</string>
     <string-array name="timetableHour">
         <item>00</item>
         <item>01</item>
@@ -35,13 +51,7 @@
         <item>50</item>
         <item>60</item>
     </string-array>
-    <string name="notificationInfo">Ajanvaraus muistutus</string>
-    <string name="notificationText1">Ajanvaraus lääkärille kello </string>
     <string name="med">Medication</string>
     <string name="doc">Notification</string>
-    <string name="navigation_bg">Navigation_bg</string>
-    <string name="calendar_button">Calendar</string>
-    <string name="home_button">Home</string>
-    <string name="add_button">Add</string>
 
 </resources>
