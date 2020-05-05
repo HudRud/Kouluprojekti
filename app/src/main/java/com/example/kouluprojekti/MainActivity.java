@@ -124,6 +124,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                  intent = new Intent(MainActivity.this, Calendar.class);
                  startActivity(intent);
                  break;
+            case R.id.settings:
+                 intent = new Intent(MainActivity.this, DailyNotificationStarter.class);
+                 startActivity(intent);
+                 break;
         }
         return true;
     }

@@ -39,5 +39,8 @@
     <string name="notificationText1">Ajanvaraus lääkärille kello </string>
     <string name="med">Medication</string>
     <string name="doc">Notification</string>
+    <string name="set">Settings</string>
+    <string name="dailyNoteTitle">Settings</string>
+    <string name="dailyNoteTooltip">Daily Notifications</string>
 
 </resources>
