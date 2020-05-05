@@ -1,33 +1,56 @@
 package com.example.kouluprojekti;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 
-public class SettingsPage {
+public class SettingsPage extends Activity {
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
+        setContentView(R.layout.settings_page);
+        configureReadyButton();
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
+    }
+
+    public void onRadioButtonClicked(View v) {
+
+        boolean checked = ((RadioButton) v).isChecked();
+
+
+        switch(v.getId()) {
             case R.id.radioPurple:
                 if (checked)
-                    // Pirates are the best
+                    Utils.changeToTheme(this, Utils.THEME_PURPLE);
                     break;
             case R.id.radioBlue:
                 if (checked)
-                    // Ninjas rule
+                    Utils.changeToTheme(this, Utils.THEME_BLUE);
                     break;
             case R.id.radioRed:
                 if (checked)
-                    //
+                    Utils.changeToTheme(this, Utils.THEME_RED);
                     break;
             case R.id.radioYellow:
                 if (checked)
-                    //
+                    Utils.changeToTheme(this, Utils.THEME_YELLOW);
                     break;
         }
+    }
+
+    private void configureReadyButton() {
+        Button ReadyButton = findViewById(R.id.button);
+        ReadyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsPage.this, MainActivity.class));
+            }
+        });
     }
 
 }

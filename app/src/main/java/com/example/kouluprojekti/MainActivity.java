@@ -15,11 +15,15 @@ public class MainActivity extends AppCompatActivity {
 ArrayList<MedicationData> medList;
 ListView lv;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         configureCalendarButton();
+        configureSettingsButton();
 
         medList = new ArrayList<>();
         lv = findViewById(R.id.ListView1);
@@ -43,6 +47,16 @@ ListView lv;
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Calendar.class));
+            }
+        });
+    }
+
+    private void configureSettingsButton() {
+        ImageButton settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SettingsPage.class));
             }
         });
     }

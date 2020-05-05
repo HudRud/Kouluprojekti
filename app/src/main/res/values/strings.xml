@@ -6,7 +6,7 @@
     <string name="navigation_bg">Navigation bar\'s background colour</string>
     <string name="notificationInfo">Ajanvaraus muistutus</string>
     <string name="notificationText1">Ajanvaraus lääkärille kello </string>
-    <string name="comfirm_button">Confirm</string>
+    <string name="confirm_button">Confirm</string>
     <string name="add_medication_button">Add medication button</string>
     <string name="add_appointment_button">Add appointment button</string>
     <string name="navigation_barrier">Navigation bar\'s barrier</string>
@@ -16,4 +16,5 @@
     <string name="purple_text">Lila</string>
     <string name="yellow_text">Keltainen</string>
     <string name="red_text">Punainen</string>
+    <string name="ready_button">Valmis</string>
 </resources>
