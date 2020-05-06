@@ -44,13 +44,19 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     Calendar calendar;
     private static final String PREFNAME = "medfile";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         calendar = Calendar.getInstance();
         ImageButton calendarButton =findViewById(R.id.calendar_button);
         //addMed = findViewById(R.id.floatingActionButton);
+        configureCalendarButton();
+        configureSettingsButton();
+
         medList = new ArrayList<>();
         mMainList = findViewById(R.id.ListView1);
         getPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
@@ -143,6 +149,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.show(getSupportFragmentManager(),"TimePicker");
     }
+    private void configureSettingsButton() {
+        ImageButton settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SettingsPage.class));
+            }
+        });
+    }
+
 
     /**
      * onTimeSet metodi toimii samalla tavalla kuin onDateSet metodi mutta vain Timepickerillä
