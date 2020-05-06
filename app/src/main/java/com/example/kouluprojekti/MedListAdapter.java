@@ -1,16 +1,12 @@
 package com.example.kouluprojekti;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,18 +15,13 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
 public class MedListAdapter extends ArrayAdapter<MedicationData> {
     private Context mContext;
-
-    int mResource;
-
-
+    private int mResource;
     AddMedicationData updater = new AddMedicationData();
-
     ArrayList<MedicationData> medList;
 
-    public MedListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MedicationData> objects) {
+    MedListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MedicationData> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
@@ -41,14 +32,15 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
     /**
      * Methdod that creates a View based on the resource parameter
      *
-     * @param position
-     * @param convertView
-     * @param parent
-     * @return
+     * @param position    Index of the given ArrayList item
+     * @param convertView View used to create ListItems
+     * @param parent      Parent ListView where the views are created
+     * @return Returns the view that is used to create a ListItem
      */
     @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         Calendar c = Calendar.getInstance();
 
         String name = getItem(position).getMedName();
@@ -80,19 +72,19 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
             updater.logger(getContext(), position, false);
 
         }
-        if(!getItem(position).getMedName().equals("Appointment")){
+        if (!getItem(position).getMedName().equals("Appointment")) {
 
             topic.setText(name);
 
             timeText.setText(time);
 
-            if (getItem(position).isChecked() == false) {
+            if (!getItem(position).isChecked()) {
                 convertView.setBackgroundColor(Color.parseColor("#00FFFFFF"));
                 cc.setOnClickListener(new View.OnClickListener() {
                     /**
                      * onClick given to checkboxes created to the listView.
                      * Used to manipulate the parent and data in the medList on AddMedicationData.java
-                     * @param v
+                     * @param v View parameter given to use the method onClick
                      */
                     @Override
                     public void onClick(View v) {
@@ -110,7 +102,7 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
                 convertView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        updater.removeItem(getContext(),position);
+                        updater.removeItem(getContext(), position);
                         updater.loadData(getContext());
                         clear();
                         addAll(updater.medList);
@@ -120,7 +112,7 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
                 });
             }
 
-        }else{
+        } else {
 
             topic.setText(name);
 
@@ -128,17 +120,17 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
 
             dateText.setText(date);
 
-            if (getItem(position).isChecked() == false) {
+            if (!getItem(position).isChecked()) {
                 convertView.setBackgroundColor(Color.parseColor("#00FFFFFF"));
                 cc.setOnClickListener(new View.OnClickListener() {
                     /**
                      * onClick given to checkboxes created to the listView.
                      * Used to manipulate the parent and data in the medList on AddMedicationData.java
-                     * @param v
+                     * @param v View parameter given to use the method onClick
                      */
                     @Override
                     public void onClick(View v) {
-                        updater.removeItem(getContext(),position);
+                        updater.removeItem(getContext(), position);
                         updater.loadData(getContext());
                         clear();
                         addAll(updater.medList);

@@ -15,6 +15,10 @@ public class DailyNotifications extends ContextWrapper {
 
     private NotificationManager manager;
 
+    /***
+     * Starts the process of building a notification only if android version is at least Oreo
+     * @param base Context parameter given to the Superclass
+     */
     public DailyNotifications(Context base) {
         super(base);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -22,6 +26,10 @@ public class DailyNotifications extends ContextWrapper {
         }
     }
 
+    /***
+     * Creates a notification channel via given Channel ID and Channel Name.
+     * Calls for getManager() to create the notification channel
+     */
     @TargetApi(Build.VERSION_CODES.O)
     private void createChannel() {
         NotificationChannel channel = new NotificationChannel(CHANNELID, CHANNELNAME, NotificationManager.IMPORTANCE_HIGH);
@@ -29,6 +37,10 @@ public class DailyNotifications extends ContextWrapper {
         getManager().createNotificationChannel(channel);
     }
 
+    /***
+     * Method for fetching a notification manager, creates a new manager if needed.
+     * @return Returns a NotificationManager
+     */
     public NotificationManager getManager() {
         if (manager == null) {
             manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -36,7 +48,11 @@ public class DailyNotifications extends ContextWrapper {
         return manager;
     }
 
-    public NotificationCompat.Builder getChannelNotification(){
+    /***
+     * Creates the notification based on given options
+     * @return Returns new set of options which the NotificationCompat.Builder uses to build a notification
+     */
+    public NotificationCompat.Builder getChannelNotification() {
         return new NotificationCompat.Builder(getApplicationContext(), CHANNELID)
                 .setContentTitle("Daily reminder")
                 .setContentText("Remember to take your daily medication")

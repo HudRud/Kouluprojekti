@@ -7,15 +7,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.sql.Time;
 
 public class DailyNotificationStarter extends AppCompatActivity {
 
@@ -58,7 +55,7 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
         getTimePicker();
 
-        notificationState(switchState,alarmState);
+        notificationState(switchState, alarmState);
 
         setPrefData();
 
@@ -76,11 +73,18 @@ public class DailyNotificationStarter extends AppCompatActivity {
         setSwitchState(switchState);
     }
 
+    /***
+     * Changes AlarmState to given value
+     * @param alarmState Parameter for changing AlarmState
+     */
     private void setAlarmState(boolean alarmState) {
 
         this.alarmState = alarmState;
     }
 
+    /***
+     * Sets TimePickers initial time
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void setTimePicker() {
 
@@ -93,6 +97,9 @@ public class DailyNotificationStarter extends AppCompatActivity {
         t.setMinute(minutes);
     }
 
+    /***
+     * Gets the time from TimePicker
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void getTimePicker() {
 
@@ -103,7 +110,9 @@ public class DailyNotificationStarter extends AppCompatActivity {
         minutes = t.getMinute();
     }
 
-
+    /***
+     * Fetches data from SharedPreferences
+     */
     private void getPrefData() {
 
         SharedPreferences getPref = getSharedPreferences(DATAFILE, Activity.MODE_PRIVATE);
@@ -117,6 +126,9 @@ public class DailyNotificationStarter extends AppCompatActivity {
         minutes = getPref.getInt(TIMEMINUTE, 0);
     }
 
+    /***
+     * Saves data to SharedPreferences
+     */
     private void setPrefData() {
         SharedPreferences setPref = getSharedPreferences(DATAFILE, Activity.MODE_PRIVATE);
 
@@ -133,12 +145,21 @@ public class DailyNotificationStarter extends AppCompatActivity {
         editPref.commit();
     }
 
+    /***
+     * Method to set the initial state for the notifications switch
+     * @param b Parameter that sets the state of the switch
+     */
     private void setSwitchState(boolean b) {
         Switch s = findViewById(R.id.toggleDaily);
 
         s.setChecked(b);
     }
 
+    /***
+     * Changes SwitchState when switch is flipped.
+     * SwitchState is used to preserve selected option through SharedPreferences
+     * @param v View parameter that enables method to be bound in a switch
+     */
     public void onSwitchFlip(View v) {
 
         Switch s = findViewById(R.id.toggleDaily);
@@ -147,6 +168,10 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
     }
 
+    /***
+     * Sets up Calendar variable.
+     * Used with other methods in order to set up notifications
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void calendarSetUp() {
 
@@ -159,6 +184,10 @@ public class DailyNotificationStarter extends AppCompatActivity {
         c.set(java.util.Calendar.MINUTE, t.getMinute());
     }
 
+    /***
+     * Sets up the notifications and changes AlarmState
+     * @param c Used to set time for notification to show up
+     */
     private void startNotifications(java.util.Calendar c) {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -173,6 +202,9 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
     }
 
+    /***
+     * Cancels notifications and changes AlarmState back to default 'false'
+     */
     private void cancelNotifications() {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -187,6 +219,11 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
     }
 
+    /***
+     * Uses SwitchState and AlarmState to either cancel, or start notifications
+     * @param switchState State of the notifications Switch
+     * @param alarmState State that changes according to notification state true/false
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void notificationState(boolean switchState, boolean alarmState) {
 
