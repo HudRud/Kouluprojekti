@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     /**
-     * 
+     *
      * CreateAlarm is the method that sets the alarm to happen at the specified time
      * It creates a intent that calls BroadcastManager and gives that intent to a PendingIntent to be called later
      * alarmManager.setExact calls the pendingIntent it is given when the specified time is right

@@ -6,12 +6,14 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
+/**
+ * BroadcastManager sends the notification
+ */
 public class BroadcastManager extends BroadcastReceiver {
     /**
-     * BroadcastReceiver ottaa sitä kutsuttaessa itselleen syötetyn contextin ja intentin ja käyttää niitä
-     * lähettämään ilmoituksen
-     * @param context context joka broadcastmanagerille annettiin
-     * @param intent intent joka broadcastmanagerille annettiin
+     * BroadcastManager uses the context and intent it is given to send the notification
+     * @param context Context given to the BroadcastReceiver
+     * @param intent Intent given to the BroadcastReceiver
      */
     @Override
     public void onReceive(Context context, Intent intent){
