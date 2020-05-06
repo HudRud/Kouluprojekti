@@ -35,11 +35,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     MedListAdapter adapter;
     AddMedicationData updater;
     Calendar calendar;
+    int themeSelector;
     private static final String PREFNAME = "medfile";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        onStartTheme();
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
@@ -151,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.show(getSupportFragmentManager(), "TimePicker");
     }
+
     /**
      * OnTimeSet uses TimePickerFragment to get the selected time
      * After the time is selected Date and Time strings are created for the ListView adapter
@@ -204,5 +207,27 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
         assert alarmManager != null;
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
+
+    /**
+     * Sets start theme based on SharedPreferences
+     */
+    public void onStartTheme() {
+
+        themeSelector = getSharedPreferences("theme",Activity.MODE_PRIVATE).getInt("startThemeKeys",0);
+
+        switch (themeSelector) {
+            case 0:
+                Utils.setThemee(0);
+                break;
+            case 1:
+                Utils.setThemee(1);
+                break;
+            case 2:
+                Utils.setThemee(2);
+                break;
+            case 3:
+                Utils.setThemee(3);
+        }
     }
 }

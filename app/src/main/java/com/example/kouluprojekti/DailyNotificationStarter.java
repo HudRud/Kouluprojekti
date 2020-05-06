@@ -14,6 +14,9 @@ import android.widget.TimePicker;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+/***
+ * Activity class that lets the user choose the time for daily notifications
+ */
 public class DailyNotificationStarter extends AppCompatActivity {
 
     private static final String DATAFILE = "datafile";

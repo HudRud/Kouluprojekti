@@ -54,7 +54,7 @@ This is to provide accuracy for the json and to prevent data loss
 
     /***
      * Method that shows the TimePicker
-     * @param v View parameter used to bind the method to a View
+     * @param v Näkymä aktiviteetissä
      */
     public void timePickerButton(View v) {
         DialogFragment timePicker = new TimePickerFragment();
@@ -63,7 +63,7 @@ This is to provide accuracy for the json and to prevent data loss
 
     /***
      * Method that Checks that neither TextViews are empty and starts the Note creating process
-     * @param v View parameter used to bind the method to a View
+     * @param v Näkymä aktiviteetissä
      */
     public void addButton(View v) {
 

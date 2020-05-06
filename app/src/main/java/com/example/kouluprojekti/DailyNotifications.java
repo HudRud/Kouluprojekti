@@ -9,6 +9,9 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+/***
+ * Class for creating notification channels and notifications
+ */
 public class DailyNotifications extends ContextWrapper {
     public static final String CHANNELID = "Channel_1";
     public static final String CHANNELNAME = "dailyChannel";

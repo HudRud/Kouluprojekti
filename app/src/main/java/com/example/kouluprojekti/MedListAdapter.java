@@ -15,6 +15,9 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/***
+ * Adapter for ListView that uses a custom layout
+ */
 public class MedListAdapter extends ArrayAdapter<MedicationData> {
     private Context mContext;
     private int mResource;
@@ -30,7 +33,7 @@ public class MedListAdapter extends ArrayAdapter<MedicationData> {
     }
 
     /**
-     * Methdod that creates a View based on the resource parameter
+     * Method that creates a View based on the resource parameter
      *
      * @param position    Index of the given ArrayList item
      * @param convertView View used to create ListItems

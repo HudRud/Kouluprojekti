@@ -47,4 +47,11 @@ public class Utils {
         }
     }
 
+    public static void setThemee(int themee) {
+        Utils.themee = themee;
+    }
+
+    public static int getThemee() {
+        return themee;
+    }
 }
