@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         calendar = Calendar.getInstance();
         ImageButton calendarButton =findViewById(R.id.calendar_button);
         //addMed = findViewById(R.id.floatingActionButton);
-        configureCalendarButton();
         configureSettingsButton();
 
         medList = new ArrayList<>();
