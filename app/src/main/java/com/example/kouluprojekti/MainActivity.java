@@ -19,9 +19,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,6 +31,13 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+public class MainActivity extends AppCompatActivity {
+
+ArrayList<MedicationData> medList;
+ListView lv;
+
+
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     ArrayList<MedicationData> medList;
@@ -43,7 +52,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
+        configureCalendarButton();
+        configureSettingsButton();
+
         calendar = Calendar.getInstance();
         ImageButton calendarButton = findViewById(R.id.calendar_button);
 
@@ -59,6 +72,18 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(), "DatePicker");
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Calendar.class));
+            }
+        });
+    }
+
+    private void configureSettingsButton() {
+        ImageButton settingsButton = findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SettingsPage.class));
             }
         });
     }
