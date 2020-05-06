@@ -1,7 +1,9 @@
 package com.example.kouluprojekti;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,23 +25,23 @@ public class SettingsPage extends Activity {
         boolean checked = ((RadioButton) v).isChecked();
 
 
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.radioPurple:
                 if (checked)
                     Utils.changeToTheme(this, Utils.THEME_PURPLE);
-                    break;
+                break;
             case R.id.radioBlue:
                 if (checked)
                     Utils.changeToTheme(this, Utils.THEME_BLUE);
-                    break;
+                break;
             case R.id.radioRed:
                 if (checked)
                     Utils.changeToTheme(this, Utils.THEME_RED);
-                    break;
+                break;
             case R.id.radioYellow:
                 if (checked)
                     Utils.changeToTheme(this, Utils.THEME_YELLOW);
-                    break;
+                break;
         }
     }
 
@@ -48,9 +50,12 @@ public class SettingsPage extends Activity {
         ReadyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor edit = getSharedPreferences("theme", Activity.MODE_PRIVATE).edit();
+                edit.putInt("startThemeKeys", Utils.getThemee());
+                edit.commit();
+
                 startActivity(new Intent(SettingsPage.this, MainActivity.class));
             }
         });
     }
-
 }
