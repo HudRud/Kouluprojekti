@@ -44,7 +44,7 @@ This is to provide accuracy for the json and to prevent data loss
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Utils.onActivityCreateSetTheme(this);
         setPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
 
         setContentView(R.layout.medicationdatainsert);

@@ -16,7 +16,6 @@
     <string name="purple_text">Lila</string>
     <string name="yellow_text">Keltainen</string>
     <string name="red_text">Punainen</string>
-    <string name="ready_button">Valmis</string>
     <string-array name="timetableHour">
         <item>00</item>
         <item>01</item>
@@ -52,17 +51,12 @@
         <item>50</item>
         <item>60</item>
     </string-array>
-    <string name="notificationInfo">Ajanvaraus muistutus</string>
-    <string name="notificationText1">Ajanvaraus lääkärille kello </string>
-    <string name="med">Medication</string>
+    <string name="med">Reminder</string>
     <string name="doc">Notification</string>
     <string name="set">Settings</string>
     <string name="dailyNoteTitle">Settings</string>
     <string name="dailyNoteTooltip">Daily Notifications</string>
-    <string name="navigation_bg">Navigation_bg</string>
-    <string name="calendar_button">Calendar</string>
-    <string name="home_button">Home</string>
-    <string name="add_button">Add</string>
     <string name="topic">Appointment</string>
 
+    <string name="ready_button">Valmis</string>
 </resources>

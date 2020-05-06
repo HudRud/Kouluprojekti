@@ -38,7 +38,7 @@ public class DailyNotificationStarter extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.daily_notification_settings);
 
         getPrefData();
