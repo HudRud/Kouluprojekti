@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         setContentView(R.layout.activity_main);
         calendar = Calendar.getInstance();
         ImageButton calendarButton =findViewById(R.id.calendar_button);
-        //configureSettingsButton();
         medList = new ArrayList<>();
         mMainList = findViewById(R.id.ListView1);
         getPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
@@ -135,13 +134,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     /**
-     * onDateSet metodi luo käyttäjälle datepickerin ja ottaa siihen syötetystä päivästä vuoden, kuukauden ja päivän
-     * Sitten se tallentaa ne ohjelmalle luodulle kalenteri instanssille
+     * OnDateSet uses DatePickerFragment to get the selected date
+     * When the date is selected onDateSet saves the selected date to a calendar instance
+     * Then it calls TimePicker
      *
-     * @param view  antaa datepickerille paikan luoda itsensä
-     * @param year  datepickeristä saatu vuosi
-     * @param month datepickeristä saatu kuukausi
-     * @param day   datepickeristä saatu päivä
+     * @param view  Binds the method to a view
+     * @param year  Gets the year from the DatePicker
+     * @param month Gets the month from the DatePicker (Note: Calendar instance starts from 0)
+     * @param day Gets the day from the DatePicker
      */
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -151,28 +151,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.show(getSupportFragmentManager(), "TimePicker");
     }
-    private void configureSettingsButton() {
-        ImageButton settingsButton = findViewById(R.id.settings_button);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SettingsPage.class));
-            }
-        });
-    }
-
-
     /**
-     *
-     * onTimeSet metodi toimii samalla tavalla kuin onDateSet metodi mutta vain Timepickerillä
-     * Sen lisäksi tallentaa SharedPreferenceihin päivästä ja ajasta luodut stringit jotta niitä voidaan käyttää muualla
-     * Kun timepickeristä painetaan ok niin ohjelma laittaa luo annetulle päivälle ja ajalle hälyytyksen
-     * Lopuksi ohjelma luo Toastin jotta käyttäjä voi vielä lukea millepäivälle hälyytys on luotu
-     *
-     * @param view Näkymä johon TimePicker ilmestyy
-     * @param hour Valittu tunti TimePickeristä
-     * @param minute Valittu minuuutti TimePickeristä
-     *
+     * OnTimeSet uses TimePickerFragment to get the selected time
+     * After the time is selected Date and Time strings are created for the ListView adapter
+     * The the alarm is set to the specified calendar instance
+     * After that it creates aditional two strings and saves the to SharedPreferences to be use on the notification itself
+     * Lastly it creates a toast for the user to see what date the alarm is set
+     * @param view Binds the method to the view
+     * @param hour Gets the hour from TimePicker
+     * @param minute Gets the minutes from TimePicker
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -203,12 +190,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     /**
-     * createAlarm luo ilmoitukselle tarvittavan intentin ja pendingintentin
-     * createAlarm herättää puhelimen sille syötetyn kalenteri instanssin mukaan
-     * jonka jälkeen se kutsuu pendingintenttiä joka kutsuu intenttiä joka kutsuu broadcastmanageria
-     * joka antaa käskyn luoda ilmoitus
-     *
-     * @param calendar kalenteri instanssi jota käytetään puhelimen herättämiseen
+     * 
+     * CreateAlarm is the method that sets the alarm to happen at the specified time
+     * It creates a intent that calls BroadcastManager and gives that intent to a PendingIntent to be called later
+     * alarmManager.setExact calls the pendingIntent it is given when the specified time is right
+     * RTC_WAKEUP allows this to happen even if the phone is sleeping
+     * @param calendar Calendar instance used to set the alarm time
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void createAlarm(Calendar calendar) {

@@ -10,6 +10,9 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+/**
+ * DatePickerFragment is used to create a small DatePicker window and get the selected date from it
+ */
 public class DatePickerFragment extends DialogFragment {
     @NonNull
     @Override

@@ -10,8 +10,8 @@ public class BroadcastManager extends BroadcastReceiver {
     /**
      * BroadcastReceiver ottaa sitä kutsuttaessa itselleen syötetyn contextin ja intentin ja käyttää niitä
      * lähettämään ilmoituksen
-     * @param context
-     * @param intent
+     * @param context context joka broadcastmanagerille annettiin
+     * @param intent intent joka broadcastmanagerille annettiin
      */
     @Override
     public void onReceive(Context context, Intent intent){

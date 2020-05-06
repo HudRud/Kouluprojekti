@@ -10,6 +10,9 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+/**
+ * TimePickerFragment is used to create small TimePicker window and get the selected time from it
+ */
 public class TimePickerFragment extends DialogFragment {
     @NonNull
     @Override

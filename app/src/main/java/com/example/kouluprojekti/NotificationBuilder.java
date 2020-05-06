@@ -13,7 +13,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 /**
- * NotificationBuilder classissa määritetään minkä lainen ilmoitus halutaan luoda kun on aika luoda sellainen
+ * NotificationBuilder creates notifications and creates the needed channels for them
  */
 public class NotificationBuilder extends ContextWrapper {
     public static String Id = "Id";
@@ -27,8 +27,7 @@ public class NotificationBuilder extends ContextWrapper {
     }
 
     /**
-     * NotificationChannel metodi luo itsessään ilmoituksen ja määrittää sille haluttuja lupia,
-     * kuten lupa värisyttää puhelinta
+     * NotificationChannel method creates a channel for the notification and sets permissions for it
      */
     @TargetApi(Build.VERSION_CODES.O)
     public void notificationChannel(){
@@ -41,8 +40,8 @@ public class NotificationBuilder extends ContextWrapper {
     }
 
     /**
-     * Jos notificationmanageria ei ole luo sellainen
-     * @return notificationmanager
+     * Creates NotificationManager if one is not created
+     * @return  returns the NotificationManager for later use
      */
     public NotificationManager notManager(){
         if(notManager == null){
@@ -52,8 +51,10 @@ public class NotificationBuilder extends ContextWrapper {
     }
 
     /**
-     * Annetaan ilmoitukselle siihen halutut tekstit ja kuva
-     * @return
+     * NotificationCompat.Builder creates the notification
+     * Date and Time variables are taken from SharedPreferences and used to create the ContentText
+     * Icon for the notification is taken from the Drawables
+     * @return returns the notification builder
      */
     public NotificationCompat.Builder notChannel(){
         SharedPreferences prefGet = getSharedPreferences("AlarmString", Activity.MODE_PRIVATE);
