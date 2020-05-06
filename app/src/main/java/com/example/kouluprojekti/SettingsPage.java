@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+
+/**
+ * SettingsPage creates a new page where the user can change the colour theme of the application
+ */
 public class SettingsPage extends Activity {
 
     @Override
@@ -18,6 +22,10 @@ public class SettingsPage extends Activity {
 
     }
 
+    /**
+     * onRadioButtonClicked() checks which radio button has been pressed and calls changeToTheme() to change the theme to the picked one
+     * @param v The view where the radio buttons are located
+     */
     public void onRadioButtonClicked(View v) {
 
         boolean checked = ((RadioButton) v).isChecked();
@@ -43,6 +51,9 @@ public class SettingsPage extends Activity {
         }
     }
 
+    /**
+     * configureReadyButton() makes the ReadyButton clickable to take the user back to the MainActivity
+     */
     private void configureReadyButton() {
         Button ReadyButton = findViewById(R.id.button);
         ReadyButton.setOnClickListener(new View.OnClickListener() {
