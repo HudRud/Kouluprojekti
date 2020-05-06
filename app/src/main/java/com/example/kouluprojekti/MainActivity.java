@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         setContentView(R.layout.activity_main);
         calendar = Calendar.getInstance();
         ImageButton calendarButton =findViewById(R.id.calendar_button);
-        configureSettingsButton();
+        //configureSettingsButton();
         medList = new ArrayList<>();
         mMainList = findViewById(R.id.ListView1);
         getPref = getSharedPreferences(PREFNAME, Activity.MODE_PRIVATE);
@@ -117,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         pop.inflate(R.menu.popupmenu);
         pop.show();
     }
+    public void addMedicationNoti(View v){
+        Intent intent = new Intent(MainActivity.this,AddMedicationData.class);
+        startActivity(intent);
+    }
 
     /***
      * Method that starts an activity depending on button pressed
@@ -127,11 +131,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.medication:
-                intent = new Intent(MainActivity.this, AddMedicationData.class);
+            case R.id.settings:
+                intent = new Intent(MainActivity.this, SettingsPage.class);
                 startActivity(intent);
                 break;
-            case R.id.settings:
+            case R.id.notification:
                 intent = new Intent(MainActivity.this, DailyNotificationStarter.class);
                 startActivity(intent);
                 break;

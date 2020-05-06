@@ -51,7 +51,7 @@
         <item>50</item>
         <item>60</item>
     </string-array>
-    <string name="med">Medication</string>
+    <string name="med">Reminder</string>
     <string name="doc">Notification</string>
     <string name="set">Settings</string>
     <string name="dailyNoteTitle">Settings</string>
