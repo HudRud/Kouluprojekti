@@ -57,6 +57,7 @@
     <string name="dailyNoteTitle">Settings</string>
     <string name="dailyNoteTooltip">Daily Notifications</string>
     <string name="topic">Appointment</string>
+    <string name="remind">Reminder</string>
 
     <string name="ready_button">Valmis</string>
 </resources>

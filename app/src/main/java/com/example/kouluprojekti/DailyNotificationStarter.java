@@ -63,6 +63,17 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getTimePicker();
+
+        notificationState(switchState, alarmState);
+
+        setPrefData();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -189,16 +200,18 @@ public class DailyNotificationStarter extends AppCompatActivity {
      * @param c Used to set time for notification to show up
      */
     private void startNotifications(java.util.Calendar c) {
+        if(alarmState) {
+            cancelNotifications();
+        }
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            Intent intent = new Intent(this, DailyNotificationsReceiver.class);
 
-        Intent intent = new Intent(this, DailyNotificationsReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
-
-        setAlarmState(true);
+            setAlarmState(true);
 
     }
 
@@ -227,7 +240,7 @@ public class DailyNotificationStarter extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void notificationState(boolean switchState, boolean alarmState) {
 
-        if (switchState && !alarmState) {
+        if (switchState) {
 
             calendarSetUp();
 
