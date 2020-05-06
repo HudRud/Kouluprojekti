@@ -62,6 +62,6 @@ public class NotificationBuilder extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(),Id)
                 .setContentText("Doctor's appointment on the " + alarmStringDate + " at " + alarmStringTime)
                 .setContentTitle(getString(R.string.remind))
-                .setSmallIcon(R.mipmap.ic_launcher_round);
+                .setSmallIcon(R.drawable.ic_templogo);
     }
 }

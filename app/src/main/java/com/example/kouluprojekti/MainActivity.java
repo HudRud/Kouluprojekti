@@ -163,11 +163,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
     /**
-     * onTimeSet metodi toimii samalla tavalla kuin onDateSet metodi mutta vain Timepickerillä
      *
-     * @param view
-     * @param hour
-     * @param minute
+     * onTimeSet metodi toimii samalla tavalla kuin onDateSet metodi mutta vain Timepickerillä
+     * Sen lisäksi tallentaa SharedPreferenceihin päivästä ja ajasta luodut stringit jotta niitä voidaan käyttää muualla
+     * Kun timepickeristä painetaan ok niin ohjelma laittaa luo annetulle päivälle ja ajalle hälyytyksen
+     * Lopuksi ohjelma luo Toastin jotta käyttäjä voi vielä lukea millepäivälle hälyytys on luotu
+     *
+     * @param view Näkymä johon TimePicker ilmestyy
+     * @param hour Valittu tunti TimePickeristä
+     * @param minute Valittu minuuutti TimePickeristä
+     *
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override

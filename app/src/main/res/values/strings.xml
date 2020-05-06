@@ -1,63 +1,27 @@
 <resources>
-    <string name="app_name">Kouluprojekti</string>
+    <string name="app_name">MediDate</string>
     <string name="add_button">Add button</string>
     <string name="home_button">Home button</string>
     <string name="calendar_button">Calendar button</string>
     <string name="navigation_bg">Navigation bar\'s background colour</string>
-    <string name="notificationInfo">Ajanvaraus muistutus</string>
-    <string name="notificationText1">Ajanvaraus lääkärille kello </string>
+    <string name="notificationInfo">Appointment reminder</string>
+    <string name="notificationText1">Appointment at </string>
     <string name="confirm_button">Confirm</string>
     <string name="add_medication_button">Add medication button</string>
     <string name="add_appointment_button">Add appointment button</string>
     <string name="navigation_barrier">Navigation bar\'s barrier</string>
     <string name="settings_button">Settings_button</string>
-    <string name="theme_text">Sovelluksen väriteema</string>
-    <string name="blue_text">Sininen</string>
-    <string name="purple_text">Lila</string>
-    <string name="yellow_text">Keltainen</string>
-    <string name="red_text">Punainen</string>
-    <string-array name="timetableHour">
-        <item>00</item>
-        <item>01</item>
-        <item>03</item>
-        <item>04</item>
-        <item>05</item>
-        <item>06</item>
-        <item>07</item>
-        <item>08</item>
-        <item>09</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
-        <item>19</item>
-        <item>20</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-    </string-array>
-    <string-array name="timetableMinute">
-        <item>00</item>
-        <item>10</item>
-        <item>20</item>
-        <item>30</item>
-        <item>40</item>
-        <item>50</item>
-        <item>60</item>
-    </string-array>
+    <string name="theme_text">Color theme</string>
+    <string name="blue_text">Blue</string>
+    <string name="purple_text">Purple</string>
+    <string name="yellow_text">Yellow</string>
+    <string name="red_text">Red</string>
     <string name="med">Reminder</string>
     <string name="doc">Notification</string>
     <string name="set">Settings</string>
-    <string name="dailyNoteTitle">Settings</string>
+    <string name="dailyNoteTitle">Reminder</string>
     <string name="dailyNoteTooltip">Daily Notifications</string>
     <string name="topic">Appointment</string>
     <string name="remind">Reminder</string>
-
-    <string name="ready_button">Valmis</string>
+    <string name="ready_button">Ready</string>
 </resources>

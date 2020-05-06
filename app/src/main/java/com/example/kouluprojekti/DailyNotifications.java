@@ -58,7 +58,7 @@ public class DailyNotifications extends ContextWrapper {
                 .setContentText("Remember to take your daily medication")
 
                 //Insert the name of notification logo for the daily notifications below to "R.drawable. "
-                .setSmallIcon(R.drawable.ic_one);
+                .setSmallIcon(R.drawable.ic_templogo);
 
     }
 }
