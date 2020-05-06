@@ -3,7 +3,6 @@ package com.example.kouluprojekti;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -22,10 +21,8 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -39,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     AddMedicationData updater;
     Calendar calendar;
     private static final String PREFNAME = "medfile";
-
 
 
     @Override
@@ -93,15 +89,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
      * Saves data to SharedPreferences
      */
     public void saveData() {
-
         Gson gson = new Gson();
-
         SharedPreferences.Editor edit = getPref.edit();
-
         String json = gson.toJson(medList);
-
         edit.putString("DATAJSON", json);
-
         edit.commit();
     }
 
@@ -161,11 +152,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     /**
-     * onTimeSet metodi toimii samalla tavalla kuin onDateSet metodi mutta vain Timepickerillä
      *
-     * @param view
-     * @param hour
-     * @param minute
+     * onTimeSet metodi toimii samalla tavalla kuin onDateSet metodi mutta vain Timepickerillä
+     * Sen lisäksi tallentaa SharedPreferenceihin päivästä ja ajasta luodut stringit jotta niitä voidaan käyttää muualla
+     * Kun timepickeristä painetaan ok niin ohjelma laittaa luo annetulle päivälle ja ajalle hälyytyksen
+     * Lopuksi ohjelma luo Toastin jotta käyttäjä voi vielä lukea millepäivälle hälyytys on luotu
+     *
+     * @param view Näkymä johon TimePicker ilmestyy
+     * @param hour Valittu tunti TimePickeristä
+     * @param minute Valittu minuuutti TimePickeristä
+     *
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -184,8 +180,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         adapter.addAll(medList);
         adapter.notifyDataSetChanged();
         createAlarm(calendar);
-        Toast.makeText(getApplicationContext(),"Alarm set on: " + calendar.get(Calendar.DAY_OF_MONTH) + "." + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.YEAR)
-                + "\nOn: " + calendar.get(Calendar.HOUR_OF_DAY) + "." + calendar.get(Calendar.MINUTE),Toast.LENGTH_LONG).show();
+        String alarmStringDate = calendar.get(Calendar.DAY_OF_MONTH) + "." + (calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
+        String alarmStringTime = calendar.get(Calendar.HOUR_OF_DAY) + "." + calendar.get(Calendar.MINUTE);
+        SharedPreferences prefPut = getSharedPreferences("AlarmString",Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEdit = prefPut.edit();
+        prefEdit.putString("alarmDate", alarmStringDate);
+        prefEdit.putString("alarmTime", alarmStringTime);
+        prefEdit.commit();
+        Toast.makeText(getApplicationContext(),"Alarm set on: " + alarmStringDate
+                + "\nOn: " + alarmStringTime,Toast.LENGTH_LONG).show();
     }
 
     /**
