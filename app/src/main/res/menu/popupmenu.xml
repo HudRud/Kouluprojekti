@@ -4,6 +4,6 @@
         android:id="@+id/medication"
         android:title="@string/med"/>
     <item
-        android:id="@+id/notification"
-        android:title="@string/doc"/>
+        android:id="@+id/settings"
+        android:title="@string/set"/>
 </menu>

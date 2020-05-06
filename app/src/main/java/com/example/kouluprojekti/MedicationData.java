@@ -4,11 +4,13 @@ public class MedicationData {
     private String medName;
     private String time;
     private boolean isChecked;
+    private String date;
 
-    public MedicationData(String medName, String time, boolean isChecked) {
+    public MedicationData(String medName, String time, boolean isChecked, String date) {
         this.medName = medName;
         this.time = time;
         this.isChecked = isChecked;
+        this.date = date;
     }
 
     public String getTime() {
@@ -33,5 +35,13 @@ public class MedicationData {
 
     public void setChecked(boolean checked) {
         isChecked = checked;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

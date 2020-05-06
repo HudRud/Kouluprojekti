@@ -53,6 +53,10 @@
     </string-array>
     <string name="med">Medication</string>
     <string name="doc">Notification</string>
+    <string name="set">Settings</string>
+    <string name="dailyNoteTitle">Settings</string>
+    <string name="dailyNoteTooltip">Daily Notifications</string>
+    <string name="topic">Appointment</string>
 
     <string name="ready_button">Valmis</string>
 </resources>
