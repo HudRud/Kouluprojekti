@@ -63,6 +63,19 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        getTimePicker();
+
+        notificationState(switchState, alarmState);
+
+        setPrefData();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
     protected void onResume() {
         super.onResume();
 
