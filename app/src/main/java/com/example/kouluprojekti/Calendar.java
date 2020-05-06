@@ -68,7 +68,7 @@ public class Calendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FetchNotificationData();
-        setContentView(R.layout.calendar);
+        setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.button);
         hour = findViewById(R.id.hour);
         minute = findViewById(R.id.minute);
