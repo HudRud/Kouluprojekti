@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TimePicker;
@@ -203,6 +204,10 @@ public class DailyNotificationStarter extends AppCompatActivity {
      */
     private void startNotifications(java.util.Calendar c) {
 
+        if(alarmState){
+            cancelNotifications();
+        }
+
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         Intent intent = new Intent(this, DailyNotificationsReceiver.class);
@@ -212,6 +217,8 @@ public class DailyNotificationStarter extends AppCompatActivity {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000 * 60 * 24, pendingIntent);
 
         setAlarmState(true);
+
+        Log.d("Status","Notifications on");
 
     }
 
@@ -230,6 +237,7 @@ public class DailyNotificationStarter extends AppCompatActivity {
 
         setAlarmState(false);
 
+        Log.d("Status", "Notifications Cancelled");
     }
 
     /***
@@ -239,8 +247,9 @@ public class DailyNotificationStarter extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void notificationState(boolean switchState, boolean alarmState) {
-
-        if (switchState && !alarmState) {
+        Log.d("Status",switchState + " switchState");
+        Log.d("Status",alarmState + " alarmState");
+        if (switchState) {
 
             calendarSetUp();
 
