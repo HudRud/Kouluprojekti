@@ -2,7 +2,7 @@ package com.example.kouluprojekti;
 
 import android.app.Activity;
 import android.content.Intent;
-//Tehnyt: Mira Turunen
+//Mira Turunen Credit: mrbool/@mrbool.com
 /**
  * Utils contains a couple of methods related to changing the colour theme of the application
  */

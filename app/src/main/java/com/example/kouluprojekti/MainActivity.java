@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         adapter.addAll(medList);
         adapter.notifyDataSetChanged();
     }
-    //Tehnyt: Kevin Akkoyun
+    //Kevin Akkoyun
     /**
      * Method that loads data from SharedPreferences and inserts it into medList Array
      * Used to prevent data loss
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             medList = new ArrayList<>();
         }
     }
-    //Tehnyt: Kevin Akkoyun
+    //Kevin Akkoyun
     /***
      * Saves data to SharedPreferences
      */
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         edit.putString("DATAJSON", json);
         edit.commit();
     }
-    //Tehnyt: Kevin Akkoyun
+    //Kevin Akkoyun
     /**
      * Creates a popup menu for selecting the type of notification added
      *
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Intent intent = new Intent(MainActivity.this,AddMedicationData.class);
         startActivity(intent);
     }
-    //Tehnyt: Kevin Akkoyun
+    //Kevin Akkoyun
     /***
      * Method that starts an activity depending on button pressed
      * @param item Menu item that is pressed
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         }
         return true;
     }
-    //Tehnyt: Henri Hyytiä
+    //Henri Hyytiä
     /**
      * OnDateSet uses DatePickerFragment to get the selected date
      * When the date is selected onDateSet saves the selected date to a calendar instance
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         DialogFragment timePicker = new TimePickerFragment();
         timePicker.show(getSupportFragmentManager(), "TimePicker");
     }
-    //Tehnyt: Henri Hyytiä
+    //Henri Hyytiä
     /**
      * OnTimeSet uses TimePickerFragment to get the selected time
      * After the time is selected Date and Time strings are created for the ListView adapter
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Toast.makeText(getApplicationContext(),"Alarm set on: " + alarmStringDate
                 + "\nOn: " + alarmStringTime,Toast.LENGTH_LONG).show();
     }
-    //Tehnyt: Henri Hyytiä
+    //Henri Hyytiä
     /**
      *
      * CreateAlarm is the method that sets the alarm to happen at the specified time
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         assert alarmManager != null;
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
-    //Tehnyt: Mira Turunen
+    //Mira Turunen
     /**
      * Sets start theme based on SharedPreferences
      */

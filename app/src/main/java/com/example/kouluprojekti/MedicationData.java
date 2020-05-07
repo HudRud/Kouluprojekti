@@ -5,7 +5,7 @@ public class MedicationData {
     private String time;
     private boolean isChecked;
     private String date;
-    //Tehnyt: Kevin Akkoyun
+    //Kevin Akkoyun
     public MedicationData(String medName, String time, boolean isChecked, String date) {
         this.medName = medName;
         this.time = time;

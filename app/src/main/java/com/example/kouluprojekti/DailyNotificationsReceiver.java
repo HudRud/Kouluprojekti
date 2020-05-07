@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
-//Tehnyt: Kevin Akkoyun
+//Kevin Akkoyun
 /**
  * Class that receives intent from DailyNotificationsStarter
  * Builds a notification based on the options in DailyNotifications class

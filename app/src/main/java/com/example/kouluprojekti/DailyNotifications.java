@@ -8,7 +8,7 @@ import android.content.ContextWrapper;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
-//Tehnyt: Kevin Akkoyun
+//Kevin Akkoyun
 /***
  * Class for creating notification channels and notifications
  */

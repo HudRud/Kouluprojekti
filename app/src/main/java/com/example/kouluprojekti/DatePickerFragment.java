@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
-//Tehnyt: Henri Hyytiä
+//Henri Hyytiä
 /**
  * DatePickerFragment is used to create a small DatePicker window and get the selected date from it
  */

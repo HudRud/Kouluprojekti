@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
-//Tehnyt: Henri Hyytiä
+//Henri Hyytiä
 /**
  * BroadcastManager sends the notification
  */
