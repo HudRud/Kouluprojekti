@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
-
+//Tehnyt: Mira Turunen
 /**
  * SettingsPage creates a new page where the user can change the colour theme of the application
  */

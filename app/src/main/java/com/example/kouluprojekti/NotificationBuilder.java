@@ -11,7 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
-
+//Tehnyt: Henri Hyytiä
 /**
  * NotificationBuilder creates notifications and creates the needed channels for them
  */

@@ -13,7 +13,7 @@ import android.widget.TimePicker;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
+//Tehnyt: Kevin Akkoyun
 /***
  * Activity class that lets the user choose the time for daily notifications
  */

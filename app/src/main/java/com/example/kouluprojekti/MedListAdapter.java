@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+//Tehnyt: Kevin Akkoyun
 /***
  * Adapter for ListView that uses a custom layout
  */

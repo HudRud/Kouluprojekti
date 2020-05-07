@@ -20,7 +20,7 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+//Tehnyt: Kevin Akkoyun
 public class AddMedicationData extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     private static final String PREFNAME = "medfile";
     private static final String DATA = "DATAJSON";
